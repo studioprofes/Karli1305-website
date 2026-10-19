@@ -1,0 +1,39 @@
+function showPage(pageId) {
+    const pages = document.querySelectorAll(".page");
+    const selectedPage = document.getElementById(pageId);
+
+    if (!selectedPage || !selectedPage.classList.contains("page")) {
+        return;
+    }
+
+    pages.forEach(function (page) {
+        page.classList.remove("active");
+        page.setAttribute("aria-hidden", "true");
+    });
+
+    selectedPage.classList.add("active");
+    selectedPage.setAttribute("aria-hidden", "false");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    if (window.location.hash !== "#" + pageId) {
+        history.replaceState(null, "", "#" + pageId);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const pageId = window.location.hash.slice(1);
+    const requestedPage = document.getElementById(pageId);
+    const defaultPage =
+        document.querySelector(".page.active") ||
+        document.querySelector(".page");
+
+    if (requestedPage && requestedPage.classList.contains("page")) {
+        showPage(pageId);
+    } else if (defaultPage) {
+        showPage(defaultPage.id);
+    }
+});
