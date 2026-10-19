@@ -1,7 +1,7 @@
 
 /* ========================================
-   KARLI1305 — MAIN STYLESHEET
-   Elegant • Dark • Minimal • Responsive
+   KARLI1305 — PREMIUM DARK WEBSITE
+   Elegant • Minimal • Responsive
 ======================================== */
 
 /* RESET */
@@ -14,14 +14,13 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
 }
 
 body {
     min-height: 100vh;
     background: #050505;
     color: #f5f5f5;
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: Inter, Arial, sans-serif;
     overflow-x: hidden;
 }
 
@@ -38,13 +37,18 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 
+::selection {
+    background: #fff;
+    color: #050505;
+}
+
 
 /* ANIMATIONS */
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(10px);
     }
 
     to {
@@ -56,7 +60,7 @@ a {
 @keyframes reveal {
     from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(20px);
     }
 
     to {
@@ -72,7 +76,7 @@ a {
     }
 
     50% {
-        opacity: 0.5;
+        opacity: 0.55;
         box-shadow: 0 0 4px #ff3030;
     }
 }
@@ -87,48 +91,48 @@ a {
     z-index: 1000;
 
     width: 100%;
-    min-height: 75px;
+    min-height: 76px;
     padding: 0 6%;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 25px;
+    gap: 24px;
 
     background: rgba(5, 5, 5, 0.88);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid #1c1c1c;
 }
 
 .logo {
     flex-shrink: 0;
     color: #fff;
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 600;
     letter-spacing: 3px;
     text-decoration: none;
 }
 
 .logo span {
+    color: #888;
     font-weight: 300;
-    color: #aaa;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 28px;
+    gap: 27px;
 }
 
 .nav-links button {
     position: relative;
     padding: 10px 0;
 
-    background: transparent;
     border: none;
+    background: transparent;
 
     color: #999;
     font-size: 10px;
@@ -136,7 +140,7 @@ a {
     letter-spacing: 2px;
     text-transform: uppercase;
 
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
 }
 
 .nav-links button::after {
@@ -149,7 +153,7 @@ a {
     height: 1px;
 
     background: #fff;
-    transition: width 0.3s ease;
+    transition: width 0.25s ease;
 }
 
 .nav-links button:hover,
@@ -163,83 +167,88 @@ a {
 }
 
 
-/* PAGE SYSTEM */
+/* PAGE NAVIGATION */
 
 .page {
     display: none;
     min-height: 100vh;
-    padding-top: 75px;
+    padding-top: 76px;
 }
 
 .page.active {
     display: block;
-    animation: fadeIn 0.45s ease both;
+    animation: fadeIn 0.4s ease both;
 }
 
 
-/* HOME / HERO */
+/* HOME HERO */
 
 .hero {
     position: relative;
     isolation: isolate;
-
-    min-height: calc(100vh - 75px);
-    padding: 80px 24px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     overflow: hidden;
-    text-align: center;
-    background: #080808;
-}
 
-.banner-placeholder {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
+    min-height: calc(100vh - 76px);
+    min-height: calc(100svh - 76px);
+    padding: 90px 24px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    text-align: center;
 
     background:
         radial-gradient(
             ellipse at 50% 35%,
             #202020 0%,
-            #0b0b0b 45%,
-            #050505 80%
+            #0c0c0c 48%,
+            #050505 85%
         );
+}
 
-    color: #555;
-    font-size: 11px;
-    letter-spacing: 4px;
+.banner-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 1;
 
     background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.12),
-        rgba(0, 0, 0, 0.45) 55%,
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.48) 55%,
         #050505 100%
     );
+
+    pointer-events: none;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+
     width: 100%;
     max-width: 1100px;
+
     animation: reveal 0.8s ease both;
 }
 
 .small-title {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+
     color: #aaa;
     font-size: 10px;
     letter-spacing: 6px;
@@ -247,24 +256,25 @@ a {
 }
 
 .hero h1 {
-    margin: 10px 0 20px;
+    margin: 10px 0 22px;
 
     color: #fff;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(56px, 12vw, 160px);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(55px, 12vw, 150px);
     font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: 0.08em;
+    line-height: 0.98;
+    letter-spacing: 0.07em;
+
     overflow-wrap: anywhere;
 }
 
 .hero-text {
     max-width: 520px;
-    margin: 0 auto 35px;
+    margin: 0 auto 34px;
 
     color: #aaa;
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 
@@ -278,8 +288,8 @@ a {
     min-height: 48px;
     padding: 14px 30px;
 
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.02);
 
     color: #fff;
     font-size: 10px;
@@ -289,10 +299,10 @@ a {
     text-transform: uppercase;
 
     transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.3s ease;
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .main-button:hover {
@@ -314,7 +324,7 @@ a {
     width: 100%;
     max-width: 1240px;
     margin: 0 auto;
-    padding: 115px 50px;
+    padding: 110px 50px;
 }
 
 .section-label {
@@ -328,11 +338,11 @@ a {
 }
 
 .page h2 {
-    margin: 0 0 55px;
+    margin: 0 0 48px;
 
     color: #f5f5f5;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(46px, 7vw, 76px);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(45px, 7vw, 76px);
     font-weight: 400;
     line-height: 1.05;
 }
@@ -344,7 +354,7 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 75px;
+    gap: 65px;
 }
 
 .about-text {
@@ -364,47 +374,47 @@ a {
     gap: 15px;
 }
 
-.photo-placeholder {
-    min-height: 280px;
-    height: 34vw;
-    max-height: 440px;
+.about-photo {
+    display: block;
+    width: 100%;
+    height: 380px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: cover;
+    object-position: center;
 
-    overflow: hidden;
+    background: linear-gradient(145deg, #1a1a1a, #080808);
     border: 1px solid #252525;
 
-    background:
-        linear-gradient(145deg, #171717, #090909);
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease;
+}
 
-    color: #666;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-align: center;
+.about-photo:hover {
+    transform: scale(1.02);
+    border-color: #555;
 }
 
 .second-photo {
-    margin-top: 60px;
+    margin-top: 55px;
 }
 
 
 /* CLIPS */
 
 .clips-page {
-    padding-bottom: 100px;
+    padding-bottom: 80px;
 }
 
 .clip-category {
-    margin-bottom: 85px;
+    margin-bottom: 80px;
 }
 
 .clip-category h3 {
-    margin-bottom: 28px;
+    margin-bottom: 27px;
 
     color: #eee;
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
     font-size: clamp(30px, 4vw, 44px);
     font-weight: 400;
 }
@@ -418,7 +428,6 @@ a {
 .clip-card {
     display: block;
     min-width: 0;
-
     overflow: hidden;
 
     border: 1px solid #202020;
@@ -441,17 +450,21 @@ a {
 
 .clip-preview {
     position: relative;
-    min-height: 160px;
     aspect-ratio: 16 / 9;
+    min-height: 160px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     background:
-        radial-gradient(ellipse at center, #242424, #0a0a0a 75%);
+        radial-gradient(
+            ellipse at center,
+            #242424,
+            #0a0a0a 75%
+        );
 
-    color: #888;
+    color: #999;
     font-size: 32px;
 
     transition: color 0.3s ease;
@@ -469,7 +482,7 @@ a {
     margin-bottom: 10px;
 
     color: #f5f5f5;
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
     font-size: 25px;
     font-weight: 400;
 }
@@ -488,7 +501,7 @@ a {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 120px 45px;
+    padding: 110px 45px;
 }
 
 .social-list {
@@ -506,13 +519,13 @@ a {
     border-bottom: 1px solid #252525;
 
     color: #eee;
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
     font-size: clamp(23px, 4vw, 32px);
     text-decoration: none;
 
     transition:
-        padding 0.3s ease,
-        color 0.3s ease;
+        padding 0.25s ease,
+        color 0.25s ease;
 }
 
 .social-list a:hover {
@@ -527,7 +540,7 @@ a {
     width: 100%;
     max-width: 1050px;
     margin: 0 auto;
-    padding: 120px 45px;
+    padding: 110px 45px;
 }
 
 .stream-box {
@@ -535,17 +548,18 @@ a {
     align-items: center;
     gap: 25px;
 
-    padding: 40px;
+    padding: 38px;
 
     border: 1px solid #252525;
-    background: #0b0b0b;
+    background:
+        linear-gradient(135deg, #101010, #080808);
 }
 
 .stream-box h3 {
     margin-bottom: 8px;
 
     color: #f5f5f5;
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
     font-size: 32px;
     font-weight: 400;
 }
@@ -553,7 +567,7 @@ a {
 .stream-box p {
     color: #888;
     font-size: 13px;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 .stream-box .main-button {
@@ -574,7 +588,21 @@ a {
 }
 
 
-/* KEYBOARD ACCESSIBILITY */
+/* FOOTER */
+
+footer {
+    padding: 25px 20px;
+
+    border-top: 1px solid #1b1b1b;
+
+    color: #666;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+
+/* ACCESSIBILITY */
 
 a:focus-visible,
 button:focus-visible {
@@ -600,16 +628,20 @@ button:focus-visible {
         letter-spacing: 1px;
     }
 
+    .page-container {
+        padding: 90px 30px;
+    }
+
     .about-layout {
         gap: 35px;
     }
 
-    .clips-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .about-photo {
+        height: 310px;
     }
 
-    .page-container {
-        padding: 95px 30px;
+    .clips-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -617,17 +649,13 @@ button:focus-visible {
 /* MOBILE */
 
 @media (max-width: 600px) {
-    html {
-        scroll-padding-top: 115px;
-    }
-
     .navbar {
         min-height: 100px;
-        padding: 15px 18px;
+        padding: 12px 15px;
 
         flex-direction: column;
         justify-content: center;
-        gap: 10px;
+        gap: 9px;
     }
 
     .logo {
@@ -639,7 +667,7 @@ button:focus-visible {
         width: 100%;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 7px 18px;
+        gap: 6px 17px;
     }
 
     .nav-links button {
@@ -653,6 +681,7 @@ button:focus-visible {
     }
 
     .hero {
+        min-height: calc(100vh - 100px);
         min-height: calc(100svh - 100px);
         padding: 65px 20px;
     }
@@ -663,9 +692,8 @@ button:focus-visible {
     }
 
     .hero h1 {
-        font-size: clamp(43px, 12vw, 76px);
+        font-size: clamp(42px, 11vw, 72px);
         letter-spacing: 0.04em;
-        overflow-wrap: anywhere;
     }
 
     .hero-text {
@@ -684,12 +712,12 @@ button:focus-visible {
 
     .page h2 {
         margin-bottom: 35px;
-        font-size: 48px;
+        font-size: 46px;
     }
 
     .about-layout {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 32px;
     }
 
     .about-text {
@@ -701,9 +729,8 @@ button:focus-visible {
         gap: 10px;
     }
 
-    .photo-placeholder {
-        min-height: 190px;
-        height: 58vw;
+    .about-photo {
+        height: 250px;
     }
 
     .second-photo {
@@ -711,7 +738,7 @@ button:focus-visible {
     }
 
     .clips-page {
-        padding-bottom: 65px;
+        padding-bottom: 55px;
     }
 
     .clip-category {
@@ -737,7 +764,7 @@ button:focus-visible {
 
     .social-page,
     .streams-page {
-        padding: 80px 22px;
+        padding: 75px 22px;
     }
 
     .social-list a {
@@ -774,49 +801,3 @@ button:focus-visible {
         transition-duration: 0.01ms !important;
     }
 }
-
-/* ACTUAL WEBSITE IMAGES */
-
-.banner-image {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center;
-
-    display: block;
-}
-
-.hero-overlay {
-    z-index: -1;
-    pointer-events: none;
-}
-
-.about-photo {
-    display: block;
-    width: 100%;
-    height: 400px;
-
-    object-fit: cover;
-    object-position: center;
-
-    background: #101010;
-    border: 1px solid #252525;
-
-    transition: transform 0.4s ease;
-}
-
-.about-photo:hover {
-    transform: scale(1.02);
-}
-
-@media (max-width: 600px) {
-    .about-photo {
-        height: 300px;
-    }
-}
-
